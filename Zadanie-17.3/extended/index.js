@@ -1,7 +1,6 @@
 "use strict";
 
 const helpText = require("./lib/getHelp");
-//const helpMsg = helpText();
 process.stdin.setEncoding("utf-8");
 process.stdin.on("readable", function() {
   
