@@ -1,9 +1,10 @@
 "use strict";
 
 const helpText = require("./lib/getHelp");
+//const helpMsg = helpText();
 process.stdin.setEncoding("utf-8");
 process.stdin.on("readable", function() {
-  function cliStart() {
+  
     let input;
     let instruction;
     do {
@@ -23,11 +24,7 @@ process.stdin.on("readable", function() {
             break;
           case "/help":
           case "help":
-            process.stdout.write(
-              helpText()
-                .toString()
-                .trim() + "\n\n"
-            );
+            process.stdout.write(helpText + "\n\n");
             break;
           default:
             process.stderr.write("Wrong instruction!\n\n");
@@ -35,6 +32,5 @@ process.stdin.on("readable", function() {
         }
       }
     } while (input !== null);
-  }
-  cliStart();
+
 });
