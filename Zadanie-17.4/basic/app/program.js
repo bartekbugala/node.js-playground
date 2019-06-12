@@ -1,5 +1,5 @@
 'use strict';
-const osInfo = require('./osInfo');
+const osInfo = require('../modules/osInfo');
 
 process.stdin.setEncoding('utf-8');
 process.stdin.on('readable', function () {
