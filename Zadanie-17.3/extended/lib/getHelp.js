@@ -1,9 +1,9 @@
 'use strict';
 
 const help = require('./help.json')
+help.toString().trim();
 
 const helpMsg = () => {
-  help.toString().trim();
   return help.join('\n')
 }
 
