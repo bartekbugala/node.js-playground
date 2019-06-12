@@ -1,0 +1,15 @@
+[
+  "Usage: ",
+  "",
+  "$ /exit - exit application",
+  "",
+  "$ /sysLang - show enviroment language",
+  "",
+  "$ /nodeVer - display node version",
+  "",
+  "$ /osInfo - display info about OS",
+  "",
+  "$ /help - display help",
+  "",
+  "$ help - display help"
+]

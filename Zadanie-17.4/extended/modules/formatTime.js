@@ -1,5 +1,4 @@
 "use strict";
-
 module.exports = timeInSeconds => {
   let time = timeInSeconds;
   let formatedTime = {};
@@ -20,7 +19,7 @@ function displayTime(hours, minutes, seconds) {
   if (minutes > 0 || hours > 0) {
     minString = minutes + " min. ";
   }
-  secString = seconds + " sec. ";
+  secString = seconds + " sec.";
 
   return hrsString + minString + secString;
 }
