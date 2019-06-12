@@ -1,4 +1,5 @@
-'use strict'
+'use strict';
+
 const help = require('./help.json')
 
 const helpMsg = () => {
