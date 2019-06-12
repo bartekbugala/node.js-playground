@@ -1,5 +1,6 @@
 'use strict';
 const os = require('os');
+let formatTime = require('./formatTime');
 
 function getOsInfo() {
     let type = os.type();
@@ -7,6 +8,7 @@ function getOsInfo() {
     let cpu = os.cpus()[0].model;
     let userInfo = os.userInfo();
     let uptime = os.uptime();
+    uptime = 125;
     if (type === 'Darwin') {
       type = 'OSX';
     } else if (type === 'Windows_NT') {
@@ -17,7 +19,7 @@ function getOsInfo() {
     console.log('CPU model:', cpu);
     console.log('User name:', userInfo.username);
     console.log('Home dir:', userInfo.homedir);
-    console.log('Uptime: ~', (uptime / 60).toFixed(0), 'min');
+    console.log('Uptime: ~', formatTime(uptime));
     console.log('User name: ', userInfo.username);
     console.log('Home dir: ', userInfo.homedir);
   }
