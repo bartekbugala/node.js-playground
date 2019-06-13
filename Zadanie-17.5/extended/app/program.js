@@ -2,6 +2,7 @@
 const osInfo = require('../modules/osInfo');
 const helpText = require('../lib/getHelp');
 const testSeconds = require('../test/test.js');
+const colors = require('colors');
 
 // tests
 testSeconds(3700, 1, 1, 40);
@@ -21,10 +22,10 @@ process.stdin.on('readable', function() {
           process.exit();
           break;
         case '/sysLang':
-          process.stdout.write(process.env.LANG + '\n\n');
+          process.stdout.write(process.env.LANG.yellow + '\n\n');
           break;
         case '/nodeVer':
-          process.stdout.write(process.version + '\n\n');
+          process.stdout.write(process.version.blue + '\n\n');
           break;
         case '/osInfo':
           osInfo.print();
@@ -34,7 +35,7 @@ process.stdin.on('readable', function() {
           process.stdout.write(helpText + '\n\n');
           break;
         default:
-          process.stderr.write('Wrong instruction!\n\n');
+          process.stderr.write('Wrong instruction!\n\n'.red);
           break;
       }
     }

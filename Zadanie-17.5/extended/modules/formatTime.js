@@ -11,7 +11,7 @@ function timeFromSeconds(timeInSeconds) {
   return formatedTime;
 }
 
-module.exports = calculateTime;
+module.exports = timeFromSeconds;
 
 function displayTime(givenTime) {
   let formatedTime = timeFromSeconds(givenTime);
