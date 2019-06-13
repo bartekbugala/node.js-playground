@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-const help = require("./help.json");
+const help = require('./help.json');
 
 const helpMsg = () => {
-  return help.join("\n");
+  return help.join('\n');
 };
 
 module.exports = helpMsg();

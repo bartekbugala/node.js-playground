@@ -16,9 +16,9 @@ function getOsInfo() {
   let userInfo = os.userInfo();
 
   let osInfo = {
-    System: type,
-    Release: os.release(),
-    CPU: os.cpus()[0].model,
+    'System': type,
+    'Release': os.release(),
+    'CPU': os.cpus()[0].model,
     'User name:': userInfo.username,
     'Home dir:': userInfo.homedir,
     'Uptime: ~': formatTime.display(uptime),

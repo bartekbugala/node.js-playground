@@ -8,6 +8,7 @@
     "test": "test"
   },
   "scripts": {
+    "cook:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
     "test": "echo \"no test\"",
     "start": "node ./app/program.js"
   },

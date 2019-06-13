@@ -1,7 +1,7 @@
 'use strict';
 const colors = require('colors');
 
-function calculateTime(timeInSeconds) {
+function timeFromSeconds(timeInSeconds) {
   let time = timeInSeconds;
   let formatedTime = {};
   formatedTime.hours = Math.floor(time / 3600);
@@ -14,7 +14,7 @@ function calculateTime(timeInSeconds) {
 module.exports = calculateTime;
 
 function displayTime(givenTime) {
-  let formatedTime = calculateTime(givenTime);
+  let formatedTime = timeFromSeconds(givenTime);
   return timeToString(formatedTime.hours, formatedTime.minutes, formatedTime.seconds);
 }
 
