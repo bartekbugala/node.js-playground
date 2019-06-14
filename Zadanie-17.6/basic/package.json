@@ -1,7 +1,7 @@
 {
-  "name": "kodilla-17.5",
+  "name": "kodilla-17.6",
   "version": "1.0.0",
-  "description": "Testing NPM",
+  "description": "Event emitter",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
