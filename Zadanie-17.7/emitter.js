@@ -3,6 +3,7 @@ const EventEmitter = require('events').EventEmitter;
 const emitter = new EventEmitter();
 const fs = require('fs');
 const StatMode = require('stat-mode');
+const colors = require('colors');
 
 // fs.stat('./cat1.jpeg', function(err, stats) {
 //     const statMode = new StatMode(stats);
@@ -24,7 +25,7 @@ emitter.on('written1', function() {
 });
 
 emitter.on('read1', function() {
-  writeFile(fileUrl);
+    appendToFile(fileUrl);
   // Aby kolejność była zachowana.
   setTimeout(function() {
     emitter.emit('written1');
@@ -42,7 +43,7 @@ readFile(fileUrl, function() {
 
 function readFile(fileUrl, callback) {
   fs.readFile(fileUrl, 'utf-8', function(err, data) {
-    console.log(data);
+    console.log(data.yellow);
     if (typeof callback === 'function') {
       callback();
     }
@@ -51,15 +52,15 @@ function readFile(fileUrl, callback) {
 
 function writeFile(fileUrl) {
     // writeFile zamieniono na appendToFile
-  fs.appendFile(fileUrl, '\nDopisana Linijka!', function(err) {
+  fs.writeFile(fileUrl, '\n Nadpisana Linijka!', function(err) {
     if (err) throw err;
-    console.log('Zapisano');
+    console.log('Zapisano'.magenta);
   });
 }
 
 function appendToFile(fileUrl, callback) {
-  fs.appendFile(fileUrl, '\nKolejna dopisana Linijka!', function(err, data) {
-    console.log(data);
+  fs.appendFile(fileUrl, '\n Dopisana Linijka!', function(err, data) {
+    console.log('Nadpisano'.green);
     if (typeof callback === 'function') {
       callback();
     }

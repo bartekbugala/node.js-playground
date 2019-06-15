@@ -34,7 +34,3 @@ function writeFile(fileUrl) {
         console.log('Zapisano');
     });
 };
-
-
-
-
