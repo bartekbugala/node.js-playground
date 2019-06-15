@@ -1,0 +1,21 @@
+{
+  "name": "zadanie-17.7",
+  "version": "1.0.0",
+  "description": "fs module working with directories",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .\\index.js"
+  },
+  "keywords": [
+    "npm",
+    "fs",
+    "files"
+  ],
+  "author": "BB",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.3.3",
+    "stat-mode": "^0.3.0"
+  }
+}
