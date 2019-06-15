@@ -1,0 +1,15 @@
+{
+  "name": "zadanie-17.8",
+  "version": "1.0.0",
+  "description": "http node",
+  "main": "index.js",
+  "scripts": {
+    "test": "none"
+  },
+  "keywords": [
+    "node",
+    "http"
+  ],
+  "author": "BB",
+  "license": "ISC"
+}
