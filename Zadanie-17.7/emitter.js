@@ -11,40 +11,57 @@ const StatMode = require('stat-mode');
 
 const fileUrl = './text.txt';
 
-emitter.on('written1', function () {
-    fs.readFile(fileUrl, 'utf-8', function (err, data) {
-        console.log(data);   
-    });
-})
-
-emitter.on('read1', function() {
-    fs.writeFile(fileUrl, 'Text to be written in the text.txt file', function (err) {
-        if (err) throw err;
-        console.log('Zapisano');
-        emitter.emit('written1');
-    });
-})
-
-fs.readFile(fileUrl, 'utf-8', function (err, data) {
-    console.log(data);
-    emitter.emit('read1');  
+emitter.on('read2', function() {
+  appendToFile(fileUrl, function() {
+    readFile(fileUrl);
+  });
 });
 
+emitter.on('written1', function() {
+  readFile(fileUrl, function() {
+    emitter.emit('read2');
+  });
+});
 
+emitter.on('read1', function() {
+  writeFile(fileUrl);
+  // Aby kolejność była zachowana.
+  setTimeout(function() {
+    emitter.emit('written1');
+  }, 50);
+});
 
-function readFile(fileUrl) {
-    fs.readFile(fileUrl, 'utf-8', function (err, data) {
-        console.log(data);   
-    });
-};
+readFile(fileUrl, function() {
+  emitter.emit('read1');
+});
+
+/*fs.readFile(fileUrl, 'utf-8', function (err, data) {
+    console.log(data);
+    emitter.emit('read1');
+});*/
+
+function readFile(fileUrl, callback) {
+  fs.readFile(fileUrl, 'utf-8', function(err, data) {
+    console.log(data);
+    if (typeof callback === 'function') {
+      callback();
+    }
+  });
+}
 
 function writeFile(fileUrl) {
-    fs.writeFile(fileUrl, 'Text to be written in the text.txt file', function (err) {
-        if (err) throw err;
-        console.log('Zapisano');
-    });
-};
+    // writeFile zamieniono na appendToFile
+  fs.appendFile(fileUrl, '\nDopisana Linijka!', function(err) {
+    if (err) throw err;
+    console.log('Zapisano');
+  });
+}
 
-
-
-
+function appendToFile(fileUrl, callback) {
+  fs.appendFile(fileUrl, '\nKolejna dopisana Linijka!', function(err, data) {
+    console.log(data);
+    if (typeof callback === 'function') {
+      callback();
+    }
+  });
+}

@@ -1,1 +1,1 @@
-Text to be written in the text.txt file
+Pierwsza linijka
