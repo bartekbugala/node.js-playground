@@ -25,6 +25,7 @@ emitter.on('endDirExist', function() {
         if (err) throw err;
         fs.writeFile(endDir + files[key], data, function(err) {
           if (err) throw err;
+          console.log(`file: ${files[key]} - file written`)
         });
       });
     });
