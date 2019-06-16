@@ -12,27 +12,23 @@ const colors = require('colors');
 
 const fileUrl = './text.txt';
 
-emitter.on('read2', function() {
-  appendToFile(fileUrl, function() {
+emitter.on('read2', function () {
+  writeFile(fileUrl, function () {
     readFile(fileUrl);
   });
 });
 
-emitter.on('written1', function() {
-  readFile(fileUrl, function() {
+emitter.on('written1', function () {
+  readFile(fileUrl, function () {
     emitter.emit('read2');
   });
 });
 
-emitter.on('read1', function() {
-    appendToFile(fileUrl);
-  // Aby kolejność była zachowana.
-  setTimeout(function() {
-    emitter.emit('written1');
-  }, 50);
+emitter.on('read1', function () {
+  writeFile(fileUrl, function () { emitter.emit('written1') });
 });
 
-readFile(fileUrl, function() {
+readFile(fileUrl, function () {
   emitter.emit('read1');
 });
 
@@ -42,24 +38,27 @@ readFile(fileUrl, function() {
 });*/
 
 function readFile(fileUrl, callback) {
-  fs.readFile(fileUrl, 'utf-8', function(err, data) {
-    console.log(data.yellow);
+  fs.readFile(fileUrl, 'utf-8', function (err, data) {
+    console.log(data);
     if (typeof callback === 'function') {
       callback();
     }
   });
 }
 
-function writeFile(fileUrl) {
-    // writeFile zamieniono na appendToFile
-  fs.writeFile(fileUrl, '\n Nadpisana Linijka!', function(err) {
+function writeFile(fileUrl, callback) {
+  // writeFile zamieniono na appendToFile
+  fs.writeFile(fileUrl, '\n Nadpisana Linijka!', function (err) {
     if (err) throw err;
-    console.log('Zapisano'.magenta);
+    console.log('Zapisano');
+    if (typeof callback === 'function') {
+      callback();
+    }
   });
 }
 
 function appendToFile(fileUrl, callback) {
-  fs.appendFile(fileUrl, '\n Dopisana Linijka!', function(err, data) {
+  fs.appendFile(fileUrl, '\n Dopisana Linijka!', function (err, data) {
     console.log('Nadpisano'.green);
     if (typeof callback === 'function') {
       callback();
