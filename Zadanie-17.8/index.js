@@ -1,7 +1,6 @@
 'use strict';
 const http = require('http');
 const fs = require('fs');
-const path = require('path');
 const indexFile = './index.html';
 const imageFile = './error.jpg';
 const server = http.createServer();
