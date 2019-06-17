@@ -6,7 +6,7 @@ const imageFile = './error.jpg';
 const server = http.createServer();
 
 server.on('request', function(request, response) {
-  if (request.method === 'GET' && request.url === '/') {
+  if (request.method === 'GET' && request.url === '/s') {
     fs.readFile(indexFile, 'utf-8', function(err, data) {
       if (err) throw err;
       response.setHeader('Content-Type', 'text/html; charset=utf-8');
