@@ -16,11 +16,10 @@ server.on('request', function(request, response) {
   } else {
     fs.readFile(imageFile, undefined, function(err, data) {
       if (err) throw err;
-      response.setHeader('Content-Type', 'image/jpeg' );
+      response.setHeader('Content-Type', 'image/jpeg');
       response.end(data, 'binary');
     });
   }
 });
 
 server.listen(8080);
-
