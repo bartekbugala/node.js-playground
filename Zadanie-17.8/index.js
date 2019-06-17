@@ -1,6 +1,7 @@
 'use strict';
 const http = require('http');
 const fs = require('fs');
+const path = require('path');
 const indexFile = './index.html';
 const imageFile = './error.jpg';
 const server = http.createServer();
@@ -14,7 +15,7 @@ server.on('request', function(request, response) {
       response.end();
     });
   } else {
-    fs.readFile(imageFile, function(err, data) {
+    fs.readFile(imageFile, undefined, function(err, data) {
       if (err) throw err;
       response.setHeader('Content-Type', 'image/jpeg' );
       response.end(data, 'binary');
@@ -23,3 +24,4 @@ server.on('request', function(request, response) {
 });
 
 server.listen(8080);
+
