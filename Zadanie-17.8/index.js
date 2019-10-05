@@ -17,10 +17,12 @@ server.on('request', function(request, response) {
   } else {
     fs.readFile(imageFile, function(err, data) {
       if (err) throw err;
+      response.statusCode = 404;
       response.setHeader('Content-Type', 'image/jpeg');  
       response.end(data, 'binary');
     });
   }
+  
 });
 
 server.listen(8080);
